@@ -11,6 +11,7 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
 import { AdminComponent } from './admin/admin.component';
 import { CandidatesComponent } from './admin/candidates/candidates.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,13 @@ import { AgGridModule } from 'ag-grid-angular';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter:()=>{
+          return localStorage.getItem("token");
+        }
+      }
+    }),
     FormsModule,
     HttpClientModule,
     AgGridModule.withComponents([])
