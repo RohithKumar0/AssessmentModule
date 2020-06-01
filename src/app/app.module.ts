@@ -9,6 +9,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
 import { AdminComponent } from './admin/admin.component';
+import { CandidatesComponent } from './admin/candidates/candidates.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { AdminComponent } from './admin/admin.component';
     LoginComponent,
     SearchComponent,
     SearchResultsComponent,
-    AdminComponent
+    AdminComponent,
+    CandidatesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent]
