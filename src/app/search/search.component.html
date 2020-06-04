@@ -39,8 +39,10 @@
                             </form>
                         </div>
                         <!--end of col-->
+                <button id="profileButton" class="btn btn-dark" (click)="profile()">Profile</button>
+                <button id="profileButton" class="btn btn-dark" (click)="logout()">Log Out</button>
                     </div>
 </div>
 <div>
-    <app-search-results [searchItem]="search"></app-search-results>
+    <app-search-results></app-search-results>
 </div>

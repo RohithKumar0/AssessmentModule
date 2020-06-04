@@ -29,4 +29,13 @@ export class AuthService {
   public getToken(){
     return localStorage.getItem("token");
   }
+
+  public getUserdetails(){
+    this.isAutenticated();
+    return this.CurrentUser;
+  }
+
+  public getUserId():number{
+    return this.CurrentUser["id"];
+  }
 }

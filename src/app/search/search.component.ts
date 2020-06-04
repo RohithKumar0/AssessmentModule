@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginServiceService } from '../login-service.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
   search:string = "";
-  constructor() { }
+  constructor(private log:LoginServiceService, private auth:AuthService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -16,6 +19,17 @@ export class SearchComponent implements OnInit {
     this.search=text;
     console.log("search selected"+ this.search)
 
+  }
+
+  profile(){
+
+  const id = this.auth.getUserId();
+  this.router.navigate(['/profile/', id]);
+
+  }
+
+  logout(){
+   this.log.logout()
   }
 
 }
