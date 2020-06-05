@@ -35,24 +35,19 @@ Licensed under MIT
 				<div class="profile-usermenu">
 					<ul class="nav">
 						<li class="active">
-							<a href="#">
+							<a (click)="setComp('Overview')">
 							<i class="glyphicon glyphicon-home"></i>
 							Overview </a>
 						</li>
 						<li>
-							<a href="#">
+							<a (click)="setComp('Assignments')">
 							<i class="glyphicon glyphicon-user"></i>
 							My Assignments </a>
 						</li>
 						<li>
-							<a href="#" target="_blank">
+							<a (click)="setComp('Password')">
 							<i class="glyphicon glyphicon-ok"></i>
 							Change Password </a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="glyphicon glyphicon-flag"></i>
-							Help </a>
 						</li>
 					</ul>
 				</div>
@@ -61,7 +56,7 @@ Licensed under MIT
 		</div>
 		<div class="col-md-9">
             <div class="profile-content">
-				<router-outlet name="admin"></router-outlet>
+				<ng-container *ngComponentOutlet="dummyComponent"></ng-container>
 			   Some user related content goes here...
             </div>
 		</div>

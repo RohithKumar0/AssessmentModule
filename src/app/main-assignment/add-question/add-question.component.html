@@ -1,0 +1,32 @@
+<form>
+    <div class="group">
+        <label>Question  </label>
+      <input [(ngModel)] ="newUser.question" name="question" type="text"><span class="highlight"></span><span class="bar"></span>
+    </div>
+    <div class="group">
+        <label>Option A  </label>
+      <input [(ngModel)] ="newUser.a" name="a" type="text"><span class="highlight"></span><span class="bar"></span>
+    </div>
+    <div class="group">
+        <label>Option B  </label>
+      <input [(ngModel)] ="newUser.b" name="b" type="text"><span class="highlight"></span><span class="bar"></span>
+    </div>
+    <div class="group">
+        <label>Option C  </label>
+      <input [(ngModel)] ="newUser.c" name="c" type="text"><span class="highlight"></span><span class="bar"></span>
+    </div>
+    <div class="group">
+        <label>Option D  </label>
+      <input [(ngModel)] ="newUser.d" name="d" type="text"><span class="highlight"></span><span class="bar"></span>
+    </div>
+    <div class="group">
+        <label>Answer  </label>
+      <input [(ngModel)] ="newUser.answer" name="answer" type="text"><span class="highlight"></span><span class="bar"></span>
+      (a, b, c, d)
+    </div>
+    <button type="button" (click)="add()" class="button buttonBlue">Add
+      <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+    </button>
+  </form>
+
+  

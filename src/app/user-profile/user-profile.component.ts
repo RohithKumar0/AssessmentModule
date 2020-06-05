@@ -3,6 +3,8 @@ import { AuthService } from '../auth.service';
 import { User } from '../User';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
+import { CandidatePerformanceComponent } from '../main-assignment/candidate-performance/candidate-performance.component';
+import { MyAssignmentsComponent } from './my-assignments/my-assignments.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,11 +15,25 @@ export class UserProfileComponent implements OnInit {
 
   currentUser:User;
   id :any
-  constructor(private userService:UserService, private activatedRouter:ActivatedRoute) { }
+  constructor(private userService:UserService, private auth:AuthService) { }
 
+  dummyComponent: any;
   ngOnInit(): void {
-    this.id= this.activatedRouter.snapshot.paramMap.get("id")
+    this.id= this.auth.getUserId();
     this.getCurrentUser();
+  }
+
+  setComp(choice:string){
+    if (choice=="Password"){
+      this.dummyComponent= null;
+    }
+    if (choice=="Assignments"){
+      this.dummyComponent= MyAssignmentsComponent;
+    }
+    if (choice=="Overview"){
+      this.dummyComponent= null;
+    }
+
   }
 
   getCurrentUser(){

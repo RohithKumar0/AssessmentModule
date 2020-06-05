@@ -28,4 +28,9 @@ export class UserService {
     console.log(url);
     return this.http.get<any>( this.baseURL+"/"+id)
   }
+
+  getAssignments(id:any):Observable<any>{
+    const url = this.baseURL+"/"+id+"/myAssignments";
+    return this.http.get<any>(url);
+  }
 }

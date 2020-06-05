@@ -21,6 +21,10 @@ import { AboutAssignmentComponent } from './main-assignment/about-assignment/abo
 import { QuestionsComponent } from './main-assignment/questions/questions.component';
 import { CandidatePerformanceComponent } from './main-assignment/candidate-performance/candidate-performance.component';
 import { TakeTestComponent } from './take-test/take-test.component';
+import { MyAssignmentsComponent } from './user-profile/my-assignments/my-assignments.component';
+import { AddQuestionComponent } from './main-assignment/add-question/add-question.component';
+import {SocialLoginModule, AuthServiceConfig, GoogleLoginProvider} from 'ng4-social-login';
+import { CreateComponent } from './admin/create/create.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +41,10 @@ import { TakeTestComponent } from './take-test/take-test.component';
     AboutAssignmentComponent,
     QuestionsComponent,
     CandidatePerformanceComponent,
-    TakeTestComponent
+    TakeTestComponent,
+    MyAssignmentsComponent,
+    AddQuestionComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

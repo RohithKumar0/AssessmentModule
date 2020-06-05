@@ -3,6 +3,8 @@ import { LoginServiceService } from '../login-service.service';
 import { CandidatesComponent } from './candidates/candidates.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
+import { createComponent } from '@angular/compiler/src/core';
+import { CreateComponent } from './create/create.component';
 
 @Component({
   selector: 'app-admin',
@@ -25,6 +27,9 @@ export class AdminComponent implements OnInit {
       this.dummyComponent= CandidatesComponent}
     else if(choice==="Assessments"){
       this.dummyComponent= AssignmentsComponent;
+    }
+    else if(choice==="create"){
+      this.dummyComponent= CreateComponent;
     }
     else if(choice==="Profile"){
       this.dummyComponent=UserProfileComponent;

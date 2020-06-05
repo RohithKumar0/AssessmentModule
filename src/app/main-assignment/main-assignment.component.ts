@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Assignment } from '../assignmentStructure';
 import { AssignmentService } from '../assignment.service';
 import { HttpClient } from '@angular/common/http';
+import { AddQuestionComponent } from './add-question/add-question.component';
 
 @Component({
   selector: 'app-main-assignment',
@@ -28,6 +29,9 @@ export class MainAssignmentComponent implements OnInit {
   change(choice:string){
     if (choice=="about"){
       this.dummyComponent=AboutAssignmentComponent;
+    }
+    else if(choice=="add"){
+      this.dummyComponent=AddQuestionComponent;
     }
     else if(choice=="performance"){
       this.dummyComponent=CandidatePerformanceComponent;
