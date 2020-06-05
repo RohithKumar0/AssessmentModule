@@ -1,0 +1,19 @@
+<form>
+    <div class="group">
+        <label>Assignment Title  </label>
+      <input [(ngModel)] ="newAssign.name" name="question" type="text"><span class="highlight"></span><span class="bar"></span>
+    </div>
+    <div class="group">
+        <label>Expires in  </label>
+      <input [(ngModel)] ="newAssign.expire_time" name="a" placeholder="HH:MM:SS" type="text"><span class="highlight"></span><span class="bar"></span>
+    </div>
+    <div class="group">
+        <label>Duration  </label>
+      <input [(ngModel)] ="newAssign.duration" name="b" type="text" placeholder="HH:MM:SS"><span class="highlight"></span><span class="bar"></span>
+    </div>
+    <button type="button" (click)="create()" class="button buttonBlue">Create
+      <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+    </button>
+  </form>
+
+  

@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AssignmentService } from 'src/app/assignment.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-search-results',
@@ -7,10 +10,35 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SearchResultsComponent implements OnInit {
 
-  @Input() public searchItem;
-  constructor() { }
+  columnDefs:any;
+  constructor(private assignService: AssignmentService, private router:Router , private authSerive:AuthService) {
+    this.columnDefs = [
+      {headerName: 'ID', field: 'id' },
+      {headerName: 'Name', field: 'name' },  
+      {headerName: 'Author_id', field: 'user_id' },
+      {headerName: 'Expires on', field: 'expire_time' },
+      {headerName: 'Duration', field: 'duration' }
+  ];
+   }
 
   ngOnInit(): void {
   }
 
+  ongridReady(params){
+    // this.assignService.getAll().subscribe((data)=>{console.log(data);params.api.setRowData(data)});
+    console.log("kadkjsj");
+    this.assignService.getAll().subscribe((data)=>{params.api.setRowData(data)});
+  
+  }
+  getAssignProfile(params){
+    if(this.authSerive.isAutenticated()){
+
+      const id =params.data.id;
+      this.router.navigate(['/assignmentProfile/', id]);
+    }
+    else{
+      const id =params.data.id;
+      this.router.navigate(['/takeTest/', id]);
+    }
+  }
 }
