@@ -24,6 +24,7 @@ export class SearchComponent implements OnInit {
   profile(){
 
   const id = this.auth.getUserId();
+  console.log(id)
   this.router.navigate(['/profile/', id]);
 
   }

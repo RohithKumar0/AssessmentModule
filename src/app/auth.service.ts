@@ -36,6 +36,11 @@ export class AuthService {
   }
 
   public getUserId():number{
-    return this.CurrentUser["id"];
+    if (localStorage.getItem("token")){
+      return this.CurrentUser["id"];}
+      else{
+        return 0;
+      }
+
   }
 }

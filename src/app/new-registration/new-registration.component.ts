@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NewRegistrationComponent implements OnInit {
 
-  newUser:User = new User('','','', false);
+  newUser:User = new User('','','', false,"","");
   constructor(private userService:UserService, private router: Router) { }
 
   ngOnInit(): void {

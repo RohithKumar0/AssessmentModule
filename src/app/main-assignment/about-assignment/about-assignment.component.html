@@ -1,1 +1,24 @@
-<p>about-assignment works!</p>
+<div class="main">
+<form #about="ngForm">
+    <div class="group">
+        <label>Assignment Title  </label><br>
+      <input class="input" [(ngModel)] ="currentAssignment.name" value="currentAssignment.name" name="question" type="text" required #name="ngModel"><span class="highlight" ></span><span class="bar"></span>
+    </div>
+    <div class="group">
+        <label>Descriptions </label><br>
+      <input class="input" [(ngModel)] ="currentAssignment.descriptions" value="currentAssignment.descriptions" name="a" placeholder="Descriptions" type="text" required #descriptions="ngModel"><span class="highlight"></span><span class="bar"></span>
+    </div>
+    <div class="group">
+      <label>Pre-Requisites </label><br>
+    <input class="input" [(ngModel)] ="currentAssignment.pre_requisites" value="currentAssignment.pre_requisites" name="pre" placeholder="Pre-Requisites" type="text" required #pre_requisites="ngModel"><span class="highlight"></span><span class="bar"></span>
+  </div>
+    <div class="group">
+        <label>Duration  </label><br>
+      <input class="input" [(ngModel)] ="currentAssignment.duration" value="currentAssignment.duration" name="b" type="text" placeholder="HH:MM:SS" #duration="ngModel" required><span class="highlight" ></span><span class="bar"></span>
+    </div><br>
+    <button type="button" [disabled]="about.form.pristine" (click)="save()" class="button buttonBlue">Save
+      <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+    </button>
+  </form>
+
+</div>

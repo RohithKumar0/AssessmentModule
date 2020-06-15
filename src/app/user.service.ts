@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+
   baseURL = "http://localhost:5005/users"
 
   test:any;
@@ -19,6 +20,9 @@ export class UserService {
      return this.http.get<any>(this.baseURL);
   }
 
+  getAllAdmin() {
+    return this.http.get<any>(this.baseURL+"/admins");
+  }
   add(user: User):Observable<string>{
     return this.http.post<any>(this.baseURL+'/add', user);
   }
@@ -31,6 +35,18 @@ export class UserService {
 
   getAssignments(id:any):Observable<any>{
     const url = this.baseURL+"/"+id+"/myAssignments";
+    console.log("getAssignments")
     return this.http.get<any>(url);
   }
+
+  updateUser(id:any, changes:User){
+    return this.http.put(this.baseURL+"/"+id, changes);
+  }
+
+  admin(id:any):Observable<any>{
+    const url = this.baseURL+"/"+id+"/admin";
+    return this.http.get<any>(url);
+  }
+
+
 }

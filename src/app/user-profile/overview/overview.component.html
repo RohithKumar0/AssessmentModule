@@ -1,0 +1,100 @@
+<div class="bar"  *ngIf="isdataloaded">
+  <div *ngIf="IsEdit" class="details">
+  <p>Name: {{currentUser.name}} </p> 
+  <p>Email: {{currentUser.email}} </p>
+  <p>Location: {{currentUser.location}} </p>
+  <p>Email: {{currentUser.number}} </p>
+
+  <p>Role: Developer</p>
+  <p>Assignment Completed: {{count}}</p>
+<br>
+  <button class="btn btn-warning btn-sm animated" (click)="edit()">Edit</button>
+</div>
+
+<div *ngIf="!IsEdit" class='edit'>
+  <form #edit="ngForm">
+  Username: 
+  <input class="input" name='username' placeholder='Username' value="currentUser.name" [(ngModel)] ="currentUser.name" type='text' required> <br>
+  Email
+  <input class="input" name='email' placeholder='E-Mail Address' value="currentUser.email" [(ngModel)] ="currentUser.email" type='email' required>
+  <br>
+  Location
+  <input class="input" name='location' placeholder='Location' value="currentUser.location" [(ngModel)] ="currentUser.location" type='text' required>
+  <br>
+  Mobile Number
+  <input class="input" name='number' placeholder='Mobile Number' value="currentUser.number" [(ngModel)] ="currentUser.number" type='text' minlength="10" maxlength="10" required>
+  <br>
+  Password
+  <input class="input" id='pw' name='password' placeholder='Password' value="currentUser.password" [(ngModel)] ="currentUser.password" type='text' required minlength="8"><br> <br><br>
+  <input class='animated' type='submit' [disabled]="edit.form.pristine || edit.form.invalid" (click)="save()" value='Save' required>
+</form>
+</div>
+
+  <div class="pie">
+    <ngx-charts-pie-grid
+      [view]="viewpie"
+      [scheme]="colorScheme"
+      [results]="percentile"
+      [designatedTotal]=100
+      [animations]=true
+      (select)="onSelect($event)">
+    </ngx-charts-pie-grid>
+    </div>
+</div>
+
+
+
+
+<!-- 
+<div *ngIf="isdataloaded" style="display: inline-block;"> 
+<ngx-charts-line-chart
+    
+  [view]="view"
+  [scheme]="colorScheme"
+  [yScaleMin]=0
+  [yScaleMax]=400
+  [legend]="legend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxis]="xAxis"
+  [curve]="curve"
+  [yAxis]="yAxis"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [timeline]="timeline"
+  [results]="line_chart"
+  (select)="onSelect($event)"
+  >
+</ngx-charts-line-chart> -->
+<!-- </div> -->
+<div *ngIf="isdataloaded"  class="verticalBar">
+<ngx-charts-bar-vertical style="padding: 15px;"
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="VerticalBar"
+  [xAxis]="xAxis"
+  [yAxis]="yAxis"
+  [legend]="legend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  (select)="onSelect($event)">
+</ngx-charts-bar-vertical>
+</div>
+
+<div *ngIf="isdataloaded" class="stacked">
+  <ngx-charts-bar-vertical-2d
+      [view]="viewstcked"
+      [scheme]="colorSchemestacked"
+      [results]="stackedVertical"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [legend]="legend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      (select)="onSelect($event)">
+    </ngx-charts-bar-vertical-2d>
+</div>

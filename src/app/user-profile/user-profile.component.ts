@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { User } from '../User';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { CandidatePerformanceComponent } from '../main-assignment/candidate-performance/candidate-performance.component';
 import { MyAssignmentsComponent } from './my-assignments/my-assignments.component';
+import { ResultsComponent } from './results/results.component';
+import { OverviewComponent } from './overview/overview.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,12 +17,37 @@ export class UserProfileComponent implements OnInit {
 
   currentUser:User;
   id :any
-  constructor(private userService:UserService, private auth:AuthService) { }
+  IsAdmin: boolean
+  isDataLoaded : boolean= false;
+  constructor(private userService:UserService, private auth:AuthService, private router:Router, private activatedRouter: ActivatedRoute) { }
 
-  dummyComponent: any;
+  dummyComponent: any= OverviewComponent;
   ngOnInit(): void {
-    this.id= this.auth.getUserId();
-    this.getCurrentUser();
+    this.IsAdmin = this.auth.isAutenticated();
+    console.log(this.IsAdmin)
+    if(this.IsAdmin){
+      if(this.activatedRouter.snapshot.paramMap.get("id")){
+        this.id = this.activatedRouter.snapshot.paramMap.get("id")
+        console.log("parammap")
+      }
+      else{
+        this.id =this.auth.getUserId();
+      }
+
+      this.getCurrentUser();
+      this.isDataLoaded=true
+      }
+    else if (Number(this.activatedRouter.snapshot.paramMap.get("id"))==this.auth.getUserId()){
+      console.log("number")
+      this.id=this.activatedRouter.snapshot.paramMap.get("id")
+        this.getCurrentUser()
+        this.isDataLoaded=true
+
+
+    }
+    else{
+      this.router.navigate([""])
+    }
   }
 
   setComp(choice:string){
@@ -31,7 +58,10 @@ export class UserProfileComponent implements OnInit {
       this.dummyComponent= MyAssignmentsComponent;
     }
     if (choice=="Overview"){
-      this.dummyComponent= null;
+      this.dummyComponent= OverviewComponent;
+    }
+    if (choice=="result"){
+      this.dummyComponent= ResultsComponent;
     }
 
   }
@@ -42,6 +72,14 @@ export class UserProfileComponent implements OnInit {
       console.log(this.currentUser);
     })
     
+  }
+
+  admin(){
+    this.userService.admin(this.id).subscribe((data)=>{
+      console.log("made admin")
+      this.router.navigate(["/admin"])
+    })
+
   }
 
 

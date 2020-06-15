@@ -1,0 +1,15 @@
+
+{{userForm.value | json}}
+
+{{auth | json}}
+
+<form #userForm ="ngForm" (ngSubmit)="submit(password.value)">
+    <input type="text" #username placeholder="Usename" [(ngModel)]=auth.username name="username" required>
+    <input type="text" minlength="5" #password placeholder="password" [(ngModel)]=auth.password name="password" required>
+
+    <input type="submit">
+    <div *ngIf="password.invalid">
+        <p>invalid</p>
+    </div>
+    {{password.value}}
+</form>

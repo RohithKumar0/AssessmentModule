@@ -1,0 +1,24 @@
+<form>
+  
+    <div class="segment">
+      <h1>Add Result</h1>
+    </div>
+    
+    <label>
+      <input type="text" name="assignment_id" [(ngModel)] ="newResult.assignment_id" placeholder="Assessment ID"/>
+    </label>
+    <label>
+      <input type="text" name="mcq"  [(ngModel)] ="newResult.mcq" placeholder="MCQ (out of 100)"/>
+    </label>
+    <label>
+      <input type="text" name="quiz"  [(ngModel)] ="newResult.quiz" placeholder="Quiz (out of 100)"/>
+      </label>
+    <input type="text" name="assignment"  [(ngModel)] ="newResult.assignment" placeholder="Assignment (out of 100)"/>
+    <p>Project :</p> 
+    <input type="text" name="build" [(ngModel)] ="splitup.build" placeholder="Build  (out of 30)"/>
+    <input type="text" name="process" [(ngModel)] ="splitup.process" placeholder="Process (out of 30)"/>
+    <input type="text" name="testing" [(ngModel)] ="splitup.testing" placeholder="Testing (out of 40)"/><br>  
+    
+      <button (click)="onAdd()" class="red" type="button"><i class="fas fa-check"></i> Add</button>
+    
+  </form>
