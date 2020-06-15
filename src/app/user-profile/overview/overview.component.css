@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.bar{
+    background-color: aliceblue;
+    width: 100%;
+    height: 300px;
+}
+.details {
+
+    float: left;
+    height: 300px;
+    width: 50%;
+    padding: 0;
+    margin: 0;
+    
+    
+}
+.edit .input {
+    width: 100%;
+    font-size: 16px;
+    color: rgb(10, 10, 10);
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    line-height: 5px;
+  }
+  .animated{
+      text-align: center;
+      padding: 0px;
+      height: 35px;
+      width: 100px;
+  }
+.edit {
+    float: left;
+    height: 300px;
+    width: 50%;
+    padding: 20px;
+    margin: 0;
+    text-align: left;
+    outline: none;
+    color: blue;
+    background: transparent;
+
+}
+
+p{
+    text-align: left;
+    color: black;
+    padding-left: 25px;
+    padding-top: 15px;
+    line-height: normal;
+}
+
+
+.pie {
+    float: left;
+    width: 50%;
+    height: 300px;
+    text-align: end;
+    padding-left: 20px;
+}
+.verticalBar {
+    color: black;
+    width: 100%;
+    height: 350px;
+    background-color: rgb(188, 222, 252);
+}
+.stacked {
+    color: black;
+    width: 100%;
+    height: 350px;
+    padding-top: 20px;
+    padding-left: 20px;
+    background-color: rgb(151, 204, 250);
+}

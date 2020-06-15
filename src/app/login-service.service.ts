@@ -27,5 +27,9 @@ export class LoginServiceService {
     localStorage.removeItem("token");
     this.router.navigate(['/login']);
   }
+
+  loginByGoogle(user:User):Observable<any>{
+    return this.http.post("http://localhost:5005/users/loginByGoogle",user);
+  }
 }
 

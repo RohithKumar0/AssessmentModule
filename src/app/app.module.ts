@@ -23,8 +23,24 @@ import { CandidatePerformanceComponent } from './main-assignment/candidate-perfo
 import { TakeTestComponent } from './take-test/take-test.component';
 import { MyAssignmentsComponent } from './user-profile/my-assignments/my-assignments.component';
 import { AddQuestionComponent } from './main-assignment/add-question/add-question.component';
-import {SocialLoginModule, AuthServiceConfig, GoogleLoginProvider} from 'ng4-social-login';
-import { CreateComponent } from './admin/create/create.component'
+import { CreateComponent } from './admin/create/create.component';
+import { ResultsComponent } from './user-profile/results/results.component';
+import { OverviewComponent } from './user-profile/overview/overview.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxGraphModule } from '@swimlane/ngx-graph';
+import { LandingComponent } from './landing/landing.component';
+import {SocialLoginModule, AuthServiceConfig, GoogleLoginProvider} from 'angularx-social-login';
+import { SampleComponent } from './sample/sample.component';
+
+const config = new  AuthServiceConfig([{
+  id : GoogleLoginProvider.PROVIDER_ID,
+  provider: new GoogleLoginProvider('686655151903-dsnobl97ube8m0q338u86f0nedulkqo7.apps.googleusercontent.com')
+}])
+
+export function provideconfig(){
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -44,11 +60,19 @@ import { CreateComponent } from './admin/create/create.component'
     TakeTestComponent,
     MyAssignmentsComponent,
     AddQuestionComponent,
-    CreateComponent
+    CreateComponent,
+    ResultsComponent,
+    OverviewComponent,
+    LandingComponent,
+    SampleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxChartsModule,
+    NgxGraphModule,
+    SocialLoginModule,
+    BrowserAnimationsModule,
     JwtModule.forRoot({
       config:{
         tokenGetter:()=>{
@@ -60,7 +84,11 @@ import { CreateComponent } from './admin/create/create.component'
     HttpClientModule,
     AgGridModule.withComponents([])
   ],
-  providers: [],
+  providers: [
+    {
+    provide: AuthServiceConfig, useFactory:provideconfig
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

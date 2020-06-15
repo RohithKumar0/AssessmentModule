@@ -1,11 +1,27 @@
-<div style="padding: 20px; ">
+<div class="toggleButtons" >
+    <button class="button" (click)="switchUser()">USERS</button>
+    <button class="button" (click)="switchAdmin()">ADMINS</button>
+</div>
+
+<div *ngIf="!admin" style="padding: 20px; ">
 <ag-grid-angular
-    style="width: 50%; height: 500px"
+    style="width: auto; height: 500px"
     class="ag-theme-balham"
     [enableSorting]="true"
     [enableFilter]="true"
     [columnDefs]="columnDefs"
     (rowClicked)="getUserProfile($event)"
-    (gridReady)="ongridReady($event)"
+    (gridReady)="onUsers($event)"
+    >
+</ag-grid-angular></div>
+<div *ngIf="admin" style="padding: 20px; ">
+<ag-grid-angular
+    style="width: auto; height: 500px"
+    class="ag-theme-balham"
+    [enableSorting]="true"
+    [enableFilter]="true"
+    [columnDefs]="columnDefs"
+    (rowClicked)="getUserProfile($event)"
+    (gridReady)="onAdmin($event)"
     >
 </ag-grid-angular></div>

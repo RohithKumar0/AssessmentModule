@@ -3,7 +3,8 @@ import {User} from '../User'
 import { LoginServiceService } from '../login-service.service';
 import { Router } from '@angular/router'
 import { authRequest } from '../authRequest';
-import { AuthService } from '../auth.service';
+import { AuthService as auth } from '../auth.service';
+import {SocialUser,AuthService, GoogleLoginProvider} from 'angularx-social-login'
 
 @Component({
   selector: 'app-login',
@@ -15,10 +16,34 @@ export class LoginComponent implements OnInit {
   user = new authRequest("","");
   currentUser:User;
   validOrNot: boolean=false;
-  constructor(private loginService:LoginServiceService,private router:Router, private authService:AuthService) { }
+  socialuser: any = SocialUser;
+  constructor(private loginService:LoginServiceService,private router:Router, private authService:auth, private socialAuthService: AuthService) {}
 
+    
   ngOnInit(): void {
   }
+
+  googleSignin() {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data)=>{
+      this.socialuser = data;
+      console.log(this.socialuser);
+      this.loginByGoogle();
+    })
+  }
+
+  loginByGoogle(){
+    const googleSignUser:User= new User(this.socialuser.name,"",this.socialuser.email,false)
+    console.log(googleSignUser);
+    this.loginService.loginByGoogle(googleSignUser).subscribe((data)=>{
+      this.currentUser=data;
+      console.log(this.currentUser);
+      localStorage.removeItem("token");
+      localStorage.setItem("token",this.currentUser["jwt"]);
+      this.validate();
+    })
+
+   }
+
 
   onSubmit(){
     console.log(this.user)
@@ -27,6 +52,7 @@ export class LoginComponent implements OnInit {
      console.log(this.currentUser["jwt"]);
      localStorage.removeItem("token");
       localStorage.setItem("token",this.currentUser["jwt"]);
+      console.log(localStorage.getItem("token"))
       this.validate();
   });
   }

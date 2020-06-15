@@ -16,19 +16,22 @@ Licensed under MIT
 				<!-- SIDEBAR USERPIC -->
 				<!-- END SIDEBAR USERPIC -->
 				<!-- SIDEBAR USER TITLE -->
-				<div class="profile-usertitle">
+				<div *ngIf="isDataLoaded" class="profile-usertitle">
 					<div class="profile-usertitle-name">
 						{{currentUser.name}}
 					</div>
-					<div class="profile-usertitle-job">
+					<div *ngIf="currentUser.admin" class="profile-usertitle-job">
+						Admin
+					</div>
+					<div *ngIf="!currentUser.admin" class="profile-usertitle-job">
 						Developer
 					</div>
 				</div>
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR BUTTONS -->
-				<div class="profile-userbuttons">
-					<button type="button" class="btn btn-success btn-sm">Follow</button>
-					<button type="button" class="btn btn-danger btn-sm">Message</button>
+				<div *ngIf="IsAdmin" class="profile-userbuttons">
+					<div *ngIf="!currentUser.admin">
+					<button (click)= "admin()" type="button" class="btn btn-success btn-sm">Make Admin</button></div>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->
@@ -42,12 +45,12 @@ Licensed under MIT
 						<li>
 							<a (click)="setComp('Assignments')">
 							<i class="glyphicon glyphicon-user"></i>
-							My Assignments </a>
+							Assessments</a>
 						</li>
-						<li>
-							<a (click)="setComp('Password')">
+						<li *ngIf="IsAdmin">
+							<a (click)="setComp('result')">
 							<i class="glyphicon glyphicon-ok"></i>
-							Change Password </a>
+							Add Results </a>
 						</li>
 					</ul>
 				</div>

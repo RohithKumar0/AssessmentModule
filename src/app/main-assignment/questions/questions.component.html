@@ -1,10 +1,48 @@
+<div>
+    <h3>MCQ</h3>
+</div>
+
 <div >
     <ag-grid-angular
-        style="width:1000px; height:500px"
+        style="width:1000px; height:200px"
         class="ag-theme-balham"
         [columnDefs]="columnDefs"
         [enableSorting]="true"
         [enableFilter]="true"
         (gridReady)="ongridReady($event)"
         >
-    </ag-grid-angular></div>
+    </ag-grid-angular>
+</div>
+
+<div>
+    <h3>QUIZ</h3>
+</div>
+
+<div >
+    <ag-grid-angular
+        style="width:auto; height:200px"
+        class="ag-theme-balham"
+        [columnDefs]="columsDefsQuiz"
+        [enableSorting]="true"
+        [enableFilter]="true"
+        (gridReady)="onQuizgridReady($event)"
+        >
+    </ag-grid-angular>
+</div>
+
+<div>
+    <h3>PROJECTS & ASSIGNMENTS</h3>
+</div>
+
+<div >
+    <ag-grid-angular
+        style="width:auto; height:200px"
+        class="ag-theme-balham"
+        [columnDefs]="columsDefsProjet"
+        [enableSorting]="true"
+        [enableFilter]="true"
+        (gridReady)="onprojectgridReady($event)"
+        >
+    </ag-grid-angular>
+</div>
+

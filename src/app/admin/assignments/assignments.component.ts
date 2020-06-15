@@ -15,8 +15,7 @@ export class AssignmentsComponent implements OnInit {
     this.columnDefs = [
       {headerName: 'ID', field: 'id' },
       {headerName: 'Name', field: 'name' },  
-      {headerName: 'Author_id', field: 'user_id' },
-      {headerName: 'Expires on', field: 'expire_time' },
+      {headerName: 'Author', field: 'author_name' },
       {headerName: 'Duration', field: 'duration' }
   ];
    }
@@ -28,7 +27,7 @@ export class AssignmentsComponent implements OnInit {
   ongridReady(params){
     // this.assignService.getAll().subscribe((data)=>{console.log(data);params.api.setRowData(data)});
     console.log("kadkjsj");
-    this.assignService.getAll().subscribe((data)=>{params.api.setRowData(data)});
+    this.assignService.getAll().subscribe((data)=>{params.api.setRowData(data);console.log(data[0])});
   
   }
 

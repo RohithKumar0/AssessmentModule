@@ -1,0 +1,13 @@
+.toggleButtons {
+    align-items: flex-start;
+    padding: 10px;
+    margin-left: 10px;
+    /* border: 1px blue solid; */
+    word-spacing: 20px;
+}
+
+.toggleButtons .button {
+    margin-left: 10px;
+    padding: 10px;
+
+}

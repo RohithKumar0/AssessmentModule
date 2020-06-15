@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class CreateComponent implements OnInit {
 
-  newAssign: Assignment1= new Assignment1("",null,null);
+  newAssign: Assignment1= new Assignment1("",null,null,null);
   id: any;
   constructor(private assign:AssignmentService, private activatedRouter:ActivatedRoute, private auth:AuthService) { }
 
@@ -21,7 +21,7 @@ export class CreateComponent implements OnInit {
   }
 
 
-  create(){
+  onCreate(){
     console.log(this.newAssign);
 this.assign.addAssignment(this.newAssign,this.id).subscribe((data)=>{
   console.log(data)

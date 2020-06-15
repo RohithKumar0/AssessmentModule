@@ -15,15 +15,38 @@
     </div>
 
     <!-- Login Form -->
-    <form (ngSubmit)="onSubmit()" >
-      <input type="email" id="login" class="fadeIn second" [(ngModel)] ="user.username" name="login" placeholder="Email">
-      <input type="password" id="password" class="fadeIn third" [(ngModel)] ="user.password" name="login" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" >
+      <!-- {{loginForm.form.valid}} -->
+      <input type="email" id="login" class="fadeIn second" [(ngModel)] ="user.username" name="user" placeholder="Email" required #name="ngModel">
+
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+      class="alert">
+  
+    <div *ngIf="name.errors.required">
+      Name is required.
+    </div>
+  </div>
+
+      <input type="password" id="password" class="fadeIn third" [(ngModel)] ="user.password" name="password" placeholder="Password" required minlength="8" #password="ngModel">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="alert">
+  
+    <div *ngIf="password.errors.required">
+      password is required.
+    </div>
+    <div *ngIf="password.errors.minlength">
+      password must be at least 8 characters long.
+    </div>
+  </div>
+      <input type="submit" [disabled]="loginForm.form.invalid" class="fadeIn fourth" value="Log In">
+      
     </form>
 
+    <div>
+      <button (click)="googleSignin()" style="color: red;"><i class="fa fa-google"></i> GOOGLE</button>
+    </div>
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a> <br>
       <a class="underlineHover" [routerLink]= "['/new']">Don't have an account?Sign Up</a>
     </div>
 

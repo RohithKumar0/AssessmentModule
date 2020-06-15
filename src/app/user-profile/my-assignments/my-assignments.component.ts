@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AssignmentService } from 'src/app/assignment.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/user.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-my-assignments',
@@ -12,25 +13,32 @@ export class MyAssignmentsComponent implements OnInit {
   id: any;
   columnDefs: any;
 
-  constructor(private userService:UserService, private activatedRouter:ActivatedRoute ) { 
+  constructor(private userService:UserService, private activatedRouter:ActivatedRoute ,private auth: AuthService) { 
     this.columnDefs = [
-      {headerName: 'ID', field: 'assignment_id' },
-      {headerName: 'Name', field: 'name' },  
-      {headerName: 'Marks', field: 'marks' },
-      {headerName: 'Expires On', field: 'expire_time' },
-      {headerName: 'Author_id', field: 'author_id' },
-      {headerName: 'Duration', field: 'duration' }
+      {headerName: 'Assign_name', field: 'assign_name' },
+      {headerName: 'Author Name', field: 'author_name' },  
+      {headerName: 'Mcq', field: 'mcq' },
+      {headerName: 'Project', field: 'project' },
+      {headerName: 'Quiz', field: 'quiz' },
+      {headerName: 'Total', field: 'total' }
   ];
   }
 
   ngOnInit(): void {
-    this.id = this.activatedRouter.snapshot.paramMap.get("id")
+    if(this.activatedRouter.snapshot.paramMap.get("id")){
+      this.id = this.activatedRouter.snapshot.paramMap.get("id")
+    }
+    else{
+      this.id =this.auth.getUserId()
+    }
   }
 
   ongridReady(params){
     // this.assignService.getAll().subscribe((data)=>{console.log(data);params.api.setRowData(data)});
+    const ar = [];
     console.log(this.id+"gotit");
-     this.userService.getAssignments(this.id).subscribe((data)=>{params.api.setRowData(data)});
+     this.userService.getAssignments(this.id).subscribe((data)=>{console.log(data);
+      params.api.setRowData(data)});
   
   }
 

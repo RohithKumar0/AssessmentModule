@@ -15,8 +15,7 @@ export class SearchResultsComponent implements OnInit {
     this.columnDefs = [
       {headerName: 'ID', field: 'id' },
       {headerName: 'Name', field: 'name' },  
-      {headerName: 'Author_id', field: 'user_id' },
-      {headerName: 'Expires on', field: 'expire_time' },
+      {headerName: 'Author_id', field: 'author_name' },
       {headerName: 'Duration', field: 'duration' }
   ];
    }

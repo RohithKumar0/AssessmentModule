@@ -13,10 +13,12 @@ export class CandidatePerformanceComponent implements OnInit {
 
   constructor( private asignService:AssignmentService, private activatedRouter:ActivatedRoute) {
     this.columnDefs = [
-      {headerName: 'ID', field: 'user_id' },
-      {headerName: 'Name', field: 'name' },  
-      {headerName: 'Marks', field: 'marks' },
-      {headerName: 'Email', field: 'email' },
+      {headerName: 'Assign_name', field: 'assign_name' },
+      {headerName: 'User Name', field: 'author_name' },  
+      {headerName: 'Mcq', field: 'mcq' },
+      {headerName: 'Project', field: 'project' },
+      {headerName: 'Quiz', field: 'quiz' },
+      {headerName: 'Total', field: 'total' }
   ];
    }
 

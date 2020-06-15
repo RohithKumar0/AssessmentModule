@@ -14,23 +14,40 @@ export class CandidatesComponent implements OnInit {
   private gridApi;
   private gridColumnApi;
 
+  admin: boolean=false;
   constructor(private userService :UserService, private router:Router ) { 
 
       this.columnDefs = [
-    {headerName: 'ID', field: 'id' },
+    {headerName: 'User ID', field: 'id' },
     {headerName: 'Name', field: 'name' },  
-    {headerName: 'Email', field: 'email' }
+    {headerName: 'Email', field: 'email' },
+    {headerName: 'Location', field: 'location' },
+    {headerName: 'Number', field: 'number' },
 ];
   }
 
   ngOnInit(): void {
   }
 
+  switchUser(){
+    this.admin = false
+  }
+  switchAdmin(){
+    this.admin = true
+  }
 
-  ongridReady(params){
+  onUsers(params){
+    // this.admin=false;
     // this.gridApi = params.api;
     // this.gridColumnApi= params.columnApi;
     this.userService.getAll().subscribe((data)=>{params.api.setRowData(data)});
+  
+  }
+  onAdmin(params){
+    // this.admin=true
+    // this.gridApi = params.api;
+    // this.gridColumnApi= params.columnApi;
+    this.userService.getAllAdmin().subscribe((data)=>{params.api.setRowData(data)});
   
   }
   getUserProfile(event){

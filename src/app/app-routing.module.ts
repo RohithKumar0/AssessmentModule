@@ -10,11 +10,14 @@ import { NewRegistrationComponent } from './new-registration/new-registration.co
 import { AssignmentsComponent } from './admin/assignments/assignments.component';
 import { MainAssignmentComponent } from './main-assignment/main-assignment.component';
 import { TakeTestComponent } from './take-test/take-test.component';
+import { LandingComponent } from './landing/landing.component';
+import { SampleComponent } from './sample/sample.component';
 
 
 const routes: Routes = [
+  {path:"sample", component:SampleComponent},
 
-  {path:"", redirectTo:"login", pathMatch:"full"},
+  {path:"", component:LandingComponent},
   {path:"login", component:LoginComponent},
   {path:"search", component:SearchComponent},
   {path:"admin", component:AdminComponent, canActivate:[adminAuth]},
@@ -22,7 +25,7 @@ const routes: Routes = [
   {path: "profile/:id", component:UserProfileComponent},
   {path:"new", component:NewRegistrationComponent},
   {path:"assignments", component:AssignmentsComponent},
-  {path:"assignmentProfile/:id", component: MainAssignmentComponent},
+  {path:"assignmentProfile/:id", component: MainAssignmentComponent, canActivate:[adminAuth]},
   {path:"takeTest/:id", component:TakeTestComponent}
 ];
 

@@ -1,32 +1,66 @@
-<form>
+<div class="mcq">
+  <h3 style="color:red;">MCQ</h3>
+<form #mcq="ngForm" >
     <div class="group">
-        <label>Question  </label>
-      <input [(ngModel)] ="newUser.question" name="question" type="text"><span class="highlight"></span><span class="bar"></span>
+      <input class="input" [(ngModel)]="newMcq.question" placeholder="Question" name="question" type="text" required #question="ngModel"><span class="highlight"></span><span class="bar"></span>
     </div>
     <div class="group">
-        <label>Option A  </label>
-      <input [(ngModel)] ="newUser.a" name="a" type="text"><span class="highlight"></span><span class="bar"></span>
+      <input class="input" [(ngModel)] ="newMcq.a" name="a" placeholder="A" type="text" #a="ngModel" required><span class="highlight"></span><span class="bar"></span>
     </div>
     <div class="group">
-        <label>Option B  </label>
-      <input [(ngModel)] ="newUser.b" name="b" type="text"><span class="highlight"></span><span class="bar"></span>
+      <input class="input" [(ngModel)] ="newMcq.b" name="b" placeholder="B" #b="ngModel" type="text" required><span class="highlight"></span><span class="bar"></span>
     </div>
     <div class="group">
-        <label>Option C  </label>
-      <input [(ngModel)] ="newUser.c" name="c" type="text"><span class="highlight"></span><span class="bar"></span>
+      <input class="input" [(ngModel)] ="newMcq.c" name="c" placeholder="C" #c="ngModel" type="text" required><span class="highlight" ></span><span class="bar"></span>
     </div>
     <div class="group">
-        <label>Option D  </label>
-      <input [(ngModel)] ="newUser.d" name="d" type="text"><span class="highlight"></span><span class="bar"></span>
+      <input class="input" [(ngModel)] ="newMcq.d" name="d" #d="ngModel" placeholder="D" type="text" required><span class="highlight" ></span><span class="bar"></span>
     </div>
     <div class="group">
-        <label>Answer  </label>
-      <input [(ngModel)] ="newUser.answer" name="answer" type="text"><span class="highlight"></span><span class="bar"></span>
-      (a, b, c, d)
+      <input class="input" [(ngModel)] ="newMcq.answer" #answer="ngModel" placeholder="Answer(a, b, c, d)" name="answer" type="text" required minlength="1" maxlength="1"><span class="highlight"></span><span class="bar"></span>
     </div>
-    <button type="button" (click)="add()" class="button buttonBlue">Add
+    <br>
+    <button type="button" [disabled]="mcq.form.invalid" (click)="add()" class="button">Add Mcq
       <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
     </button>
   </form>
-
+</div>
   
+<div class="quiz">
+  <h3 style="color:red; padding: 10px;">QUIZ</h3>
+  <form #addquiz="ngForm" >
+
+    <div class="group">
+      <br>
+      <input class="input" type="text" name="question" required placeholder="Question" [(ngModel)]="newQuiz.question" required #question="ngModel">
+    </div>
+
+    <div class="group">
+      <br>
+      <input class="input" type="text" name="answer" placeholder="answer" required [(ngModel)]="newQuiz.answer" required #answer="ngModel">
+    </div>
+    <div>
+      <br>
+      <input class="button" [disabled]="addquiz.form.invalid" (click)="addQuiz()" type="button" value="Add Quiz">
+    </div>
+  </form>
+</div>
+
+<div class="project">
+  <h3 style="color:red; padding: 10px;">PROJECTS & ASSIGNMENTS</h3>
+  <form #addproject="ngForm" >
+    <div class="group">
+      <br>
+      <input class="input" type="text" name="statement" placeholder="Statement" [(ngModel)]="newProject.statement" required #statement="ngModel">
+    </div>
+
+    <div class="group">
+      <br>
+      <input class="input" type="text" name="technology" placeholder="Technology" [(ngModel)]="newProject.technology" required #technology="ngModel">
+    </div>
+    <div>
+      <br>
+      <input class="button" [disabled]="addproject.form.invalid" (click)="addProject()" type="button" value="Add Project">
+    </div>
+  </form>
+</div>  
