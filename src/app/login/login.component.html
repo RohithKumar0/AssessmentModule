@@ -38,12 +38,12 @@
       password must be at least 8 characters long.
     </div>
   </div>
+  <h2 style="color: red;" *ngIf="InvalidCredentials">INVALID CREDENTIALS</h2> <br>
       <input type="submit" [disabled]="loginForm.form.invalid" class="fadeIn fourth" value="Log In">
-      
     </form>
 
     <div>
-      <button (click)="googleSignin()" style="color: red;"><i class="fa fa-google"></i> GOOGLE</button>
+      <button (click)="googleSignin()" style="background-color: rgb(250, 84, 84);color: white;" ><i class="fa fa-google"></i>  Sign in with Google</button>
     </div>
     <!-- Remind Passowrd -->
     <div id="formFooter">

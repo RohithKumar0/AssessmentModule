@@ -1,1 +1,84 @@
-<p>take-test works!</p>
+<div class="assesment-container">
+    <div class="assessment-about" *ngIf="isAboutAssessmentLoaded">
+        <div class="assessment-about-header">
+             <p> Name :{{currentAssignment.name}}</p>
+        </div>
+        <div class="assessment-about-details">
+            <p>Pre-Requisites  : {{currentAssignment.pre_requisites}}</p>
+            <p>Descriptions  : {{currentAssignment.descriptions}}</p>
+            <p>Duration  : {{currentAssignment.duration}}</p>
+        </div>
+    </div>
+    <div class="assessment-author" *ngIf="isAuthorLoaded">
+        <div class="header" >Created By</div>
+        <div class="author-details">
+            <p>Name: {{author.name}} </p>
+            <p>Email: {{author.email}} </p>
+            <p>Number: {{author.number}} </p>
+            <p>Location: {{author.location}} </p>
+        </div>
+    </div>
+</div>
+
+<div class="tagline">
+    <p style="padding-top: 10px; font-size: 28px; font-weight: 600;">Read the instructions and Take the Test  </p>
+</div>
+
+<div class="submission">
+    <div class="mcq">
+        <div class="mcq-about">
+            <p style="font-size: 25px; font-weight: 600;">Mcq</p>
+            <p class="para">No Time Limit</p>
+            <p class="para">Marks Obtained  : {{marks}}</p>
+        </div>
+        <div class="mcqInstructions">
+            <div class="heading">
+                <p style="font-size: 20px; font-weight: 700; padding: 10px;">Instructions</p>
+            </div>
+            <div style="margin:15px 15px;" class="instruction-body">
+                <p>Test can be taken only once</p>
+                <p>The test will start once you click on "Take Test" </p>
+                <p>Question once answered, cannot be change</p>
+            </div>
+        </div>
+        <div class="mcq-test" *ngIf="!testTaken">
+            <a style="text-decoration: none; color: green; font-size: 20px; font-weight: 800;" [routerLink]="['/takeTest',id,'test']">Take Test</a>
+        </div>
+    </div>
+    
+    <div class="project" *ngIf="isProjectLoaded">
+        
+        <div class="project-box">
+            <p style="font-size: 25px; font-weight: 600; margin-bottom: 20px;">PROJECTS & ASSIGNMENTS</p>
+            <table>
+                <tr>
+                    <th>STATEMENT</th>
+                    <th>TECHNOLOGY</th>
+                    <th>RESULTS</th>
+                </tr>
+                <tr *ngFor="let project of projects, let i= index">
+                    <td>{{project.statement}}</td>
+                    <td>{{project.technology}}</td>
+                    <td><p>Marks:{{projectArray[i]}}</p>
+                    <button (click)="projectSubmit(i)" style="padding: 10px;border-radius: 10px;">Submit</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="projectSubmit" *ngIf="isProjectClicked">
+            <div class="projectSubmit-contents">
+                <h3>PROJECT</h3>
+                Process  :
+                <input #p class="input" type="number"    name="process" >/100<br>
+                Testing  :
+                <input #t type="number" name="testing" class="input">/100<br>
+                Build  :
+                <input #b type="number" class="input" name="build">/100<br>
+                <br>
+                <button (click)="projectsplitup(p.value,t.value,b.value)" style="margin:  10px 15px;">Save</button>
+            </div>
+        </div>
+    </div>
+    <button (click)="onAdd()" style="padding: 10px; margin-left: 45%; margin-top: 50px; margin-bottom: 30px;">Submit Assessment</button>
+</div>
+
+

@@ -1,0 +1,42 @@
+<div class="nav">
+    <div class="name">
+        <h2>Assessment</h2>
+    </div>
+    <div class="cancel">
+        <button style="padding: 10px;">Cancel</button>
+    </div>    
+</div>
+
+<div class="mcq">
+    <div class="question">
+        <p >{{currentMcq.question}}</p>
+    </div>
+    <div class="options">
+        <div class="option" (click)="select(a.value)" >
+            <input type="radio" 
+            #a
+            value="a" name="answer">{{currentMcq.a}}
+        </div>
+        <label >
+            <div class="option" (click)="select(b.value)"  >
+                <input 
+                #b
+                type="radio" value="b"   name="answer">{{currentMcq.b}}
+            </div>
+        </label>
+        <div class="option" (click)="select(c.value)" >
+            <input  #c type="radio" value="c" name="answer">{{currentMcq.c}}
+        </div>
+        <div class="option" (click)="select(d.value)" >
+            <input #d type="radio" value="d" name="answer">{{currentMcq.d}}   
+        </div>
+    </div>
+</div>
+<div class="next">
+    <button *ngIf="!endReached" (click)="next()">Next</button>
+    <button *ngIf="endReached" (click)="submit()">Submit</button>
+</div>
+<!-- 
+         
+        
+        <input class="option" type="radio" value="d" name="answer">documnet object mixer -->

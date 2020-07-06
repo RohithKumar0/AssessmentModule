@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class NewRegistrationComponent implements OnInit {
 
   newUser:User = new User('','','', false,"","");
+  EmailExists: boolean = false;
   constructor(private userService:UserService, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,6 +24,10 @@ export class NewRegistrationComponent implements OnInit {
       console.log(message);
       if (message["jwt"] == "successful"){
         this.router.navigate(["/login"])
+      }
+    }, (error)=>{
+      if(error.status == 500){
+        this.EmailExists = true
       }
     })
   }

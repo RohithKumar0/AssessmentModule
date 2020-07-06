@@ -32,6 +32,8 @@ import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { LandingComponent } from './landing/landing.component';
 import {SocialLoginModule, AuthServiceConfig, GoogleLoginProvider} from 'angularx-social-login';
 import { SampleComponent } from './sample/sample.component';
+import { AdminAssessmentsComponent } from './my-assignments/admin-assessments/admin-assessments.component';
+import { TestComponent } from './take-test/test/test.component';
 
 const config = new  AuthServiceConfig([{
   id : GoogleLoginProvider.PROVIDER_ID,
@@ -64,7 +66,9 @@ export function provideconfig(){
     ResultsComponent,
     OverviewComponent,
     LandingComponent,
-    SampleComponent
+    SampleComponent,
+    AdminAssessmentsComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

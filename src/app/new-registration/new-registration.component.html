@@ -5,6 +5,7 @@
   <form #register="ngForm">
   <input name='username' placeholder='Username' [(ngModel)] ="newUser.name" type='text' required>
   <input name='email' placeholder='E-Mail Address' [(ngModel)] ="newUser.email" type='email' required>
+  <h6 style="color: red; background: transparent;" *ngIf="EmailExists">Email Already Exists</h6>
   <input name='location' placeholder='Location' [(ngModel)] ="newUser.location" type='text' required>
   <input name='number' placeholder='Mobile Number' [(ngModel)] ="newUser.number" type='text' minlength="10" maxlength="10" required>
 

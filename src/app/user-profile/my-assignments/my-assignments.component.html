@@ -1,8 +1,23 @@
-<div >
+<div *ngIf="!isAdmin">
     <ag-grid-angular
-        style="width:1000px; height:500px"
+        style="width:1000px; height:300px"
         class="ag-theme-balham"
         [columnDefs]="columnDefs"
+        [enableSorting]="true"
+        [enableFilter]="true"
         (gridReady)="ongridReady($event)"
         >
-    </ag-grid-angular></div>
+</ag-grid-angular></div>
+
+<div *ngIf="isAdmin">
+    <h2>MY ASSESSMENTS</h2>
+    <ag-grid-angular
+        style="width:1000px; height:300px"
+        class="ag-theme-balham"
+        [columnDefs]="columnDefsAdmin"
+        [enableSorting]="true"
+        [enableFilter]="true"
+        (rowClicked)= "getAssignProfile($event)"
+        (gridReady)="ongridReadyadmin($event)"
+        >
+</ag-grid-angular></div>

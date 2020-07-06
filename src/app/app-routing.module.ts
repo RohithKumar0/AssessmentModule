@@ -12,11 +12,12 @@ import { MainAssignmentComponent } from './main-assignment/main-assignment.compo
 import { TakeTestComponent } from './take-test/take-test.component';
 import { LandingComponent } from './landing/landing.component';
 import { SampleComponent } from './sample/sample.component';
+import { TestComponent } from './take-test/test/test.component';
 
 
 const routes: Routes = [
   {path:"sample", component:SampleComponent},
-
+  {path:"test", component:TestComponent},
   {path:"", component:LandingComponent},
   {path:"login", component:LoginComponent},
   {path:"search", component:SearchComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path:"new", component:NewRegistrationComponent},
   {path:"assignments", component:AssignmentsComponent},
   {path:"assignmentProfile/:id", component: MainAssignmentComponent, canActivate:[adminAuth]},
-  {path:"takeTest/:id", component:TakeTestComponent}
+  {path:"takeTest/:id", component:TakeTestComponent},
+  {path:"takeTest/:id/test", component:TestComponent}
 ];
 
 
