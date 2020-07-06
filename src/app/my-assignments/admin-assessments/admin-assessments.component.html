@@ -1,0 +1,11 @@
+<div >
+    <ag-grid-angular
+        style="width:1000px; height:300px"
+        class="ag-theme-balham"
+        [columnDefs]="columnDefsAdmin"
+        [enableSorting]="true"
+        [enableFilter]="true"
+        (rowClicked)= "getAssignProfile($event)"
+        (gridReady)="ongridReadyadmin($event)"
+        >
+</ag-grid-angular></div>

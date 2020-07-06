@@ -17,10 +17,14 @@ export class LoginComponent implements OnInit {
   currentUser:User;
   validOrNot: boolean=false;
   socialuser: any = SocialUser;
+  InvalidCredentials: boolean=false;
   constructor(private loginService:LoginServiceService,private router:Router, private authService:auth, private socialAuthService: AuthService) {}
 
     
   ngOnInit(): void {
+    if(localStorage.getItem("token")){
+      this.validate();
+    }
   }
 
   googleSignin() {
@@ -32,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginByGoogle(){
-    const googleSignUser:User= new User(this.socialuser.name,"",this.socialuser.email,false)
+    const googleSignUser:User= new User(this.socialuser.name,"",this.socialuser.email,false,"","")
     console.log(googleSignUser);
     this.loginService.loginByGoogle(googleSignUser).subscribe((data)=>{
       this.currentUser=data;
@@ -54,7 +58,14 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("token",this.currentUser["jwt"]);
       console.log(localStorage.getItem("token"))
       this.validate();
-  });
+  }, (error)=>{
+    console.log(error)
+    if(error.status == 500){
+      console.log("invalid username and passwod")
+      this.InvalidCredentials = true
+    }
+  }
+  );
   }
 
   validate(){

@@ -3,13 +3,31 @@
 
 {{auth | json}}
 
-<form #userForm ="ngForm" (ngSubmit)="submit(password.value)">
+<form #userForm ="ngForm" >
     <input type="text" #username placeholder="Usename" [(ngModel)]=auth.username name="username" required>
     <input type="text" minlength="5" #password placeholder="password" [(ngModel)]=auth.password name="password" required>
 
-    <input type="submit">
+    <input (click)="submit(reset)" type="submit">
+    <input #reset type="reset">
     <div *ngIf="password.invalid">
         <p>invalid</p>
     </div>
     {{password.value}}
 </form>
+
+{{first}}
+
+<div >
+    <ag-grid-angular
+        style="width:1000px; height:300px"
+        class="ag-theme-balham"
+        [columnDefs]="columnDefsAdmin"
+        [enableSorting]="true"
+        [enableFilter]="true"
+        allowContextMenuWithControlKey=true
+        getContextMenuItems = "true"
+        editType="fullRow"
+        [defaultColDef]="defaultColDef"
+        (gridReady)="ongridReadyadmin($event)"
+        >
+</ag-grid-angular></div>

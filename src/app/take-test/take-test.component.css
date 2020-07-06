@@ -1,0 +1,128 @@
+* {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    background-color: rgb(211, 210, 210);
+}
+.assesment-container{
+    display: flex;
+}
+
+.assessment-about, .assessment-author{
+    margin: 20px 20px;
+    position: relative;
+    height: 300px;
+    width: 40%;
+    border: 2px black solid;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+ .assessment-about-header, .header{
+    position: absolute;
+    top: 20px;
+    font-size: 24px;
+    font-weight: 900;
+    background-color: transparent;
+    
+}
+.assessment-about-details, .author-details{
+    position: absolute;
+    top: 50px;
+    line-height: 40px;
+    font-size: 24px;
+    font-weight: 500;
+    background-color: transparent;
+    
+}
+
+/* test results */
+.tagline{
+    width: 100%;
+    height: 50px;
+    border-top: 2px black solid;
+    border-bottom: 2px black solid;
+    justify-content: center;
+    text-align: center;
+}
+
+/* submissions */
+
+
+
+.mcq{
+    width: 100%;
+    height: 200px;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+}
+
+.mcq .mcq-about{
+    position: absolute;
+    width: 250px;
+    margin-left: 200px;
+    height: 150px;
+    top: 20px;
+    border: 2px solid black;
+    text-align: center;
+}
+.mcq .mcq-about .para{
+    line-height: 25px;
+    font-size: 18px;
+    font-weight: 400;
+}
+.mcqInstructions{
+    position: absolute;
+    right: 300px;
+    top:20px;
+    border: 2px solid black;
+    width: 500px;
+    height: 150px ;
+}
+.mcq .mcq-test{
+    position: absolute;
+    top: 120px;
+    margin-left: 290px;
+
+}
+.project{
+    position: absolute;
+    left: 200px;
+    border: 2px solid black;
+    width: 78%;
+    height: 500px;
+    position: relative;
+}
+.project-box{
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.project-box table,tr,td{
+    border: 1px solid black;
+    padding: 20px;
+    border-collapse: collapse;
+
+}
+button:hover {
+    background-color: rgb(24, 163, 24);
+     color: white;
+}
+.projectSubmit{
+    float: right;
+    border: 2px solid rgb(5, 5, 5);
+    margin-top: 140px;
+    margin-right: 50px;
+    text-align: center;
+    width: 200px;
+    height: 220px;
+}
+
+
+.input{
+    border-radius: 2px;
+    width: 70px;
+    margin: 10px;
+    background: transparent;
+}

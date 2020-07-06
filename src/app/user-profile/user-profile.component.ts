@@ -7,6 +7,7 @@ import { CandidatePerformanceComponent } from '../main-assignment/candidate-perf
 import { MyAssignmentsComponent } from './my-assignments/my-assignments.component';
 import { ResultsComponent } from './results/results.component';
 import { OverviewComponent } from './overview/overview.component';
+import { AdminAssessmentsComponent } from '../my-assignments/admin-assessments/admin-assessments.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -55,6 +56,7 @@ export class UserProfileComponent implements OnInit {
       this.dummyComponent= null;
     }
     if (choice=="Assignments"){
+
       this.dummyComponent= MyAssignmentsComponent;
     }
     if (choice=="Overview"){

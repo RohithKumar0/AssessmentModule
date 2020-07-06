@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignmentService } from 'src/app/assignment.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user.service';
 import { AuthService } from 'src/app/auth.service';
 
@@ -12,8 +12,11 @@ import { AuthService } from 'src/app/auth.service';
 export class MyAssignmentsComponent implements OnInit {
   id: any;
   columnDefs: any;
+  columnDefsAdmin: any;
+  isAdmin: boolean= false;
+  defaultColDef: { flex: number; sortable: boolean; autoHeight: boolean; filter: boolean; };
 
-  constructor(private userService:UserService, private activatedRouter:ActivatedRoute ,private auth: AuthService) { 
+  constructor(private userService:UserService, private activatedRouter:ActivatedRoute ,private auth: AuthService, private assignService: AssignmentService, private router:Router) { 
     this.columnDefs = [
       {headerName: 'Assign_name', field: 'assign_name' },
       {headerName: 'Author Name', field: 'author_name' },  
@@ -22,6 +25,13 @@ export class MyAssignmentsComponent implements OnInit {
       {headerName: 'Quiz', field: 'quiz' },
       {headerName: 'Total', field: 'total' }
   ];
+  this.columnDefsAdmin = [
+    {headerName: 'Author', field: 'author_name' },
+    {headerName: 'ID', field: 'id' },
+      {headerName: 'Name', field: 'name' },  
+      {headerName: 'Duration', field: 'duration' }
+];
+
   }
 
   ngOnInit(): void {
@@ -29,17 +39,30 @@ export class MyAssignmentsComponent implements OnInit {
       this.id = this.activatedRouter.snapshot.paramMap.get("id")
     }
     else{
+      this.isAdmin=true
       this.id =this.auth.getUserId()
     }
+
   }
 
+
   ongridReady(params){
-    // this.assignService.getAll().subscribe((data)=>{console.log(data);params.api.setRowData(data)});
-    const ar = [];
-    console.log(this.id+"gotit");
+    console.log(this.isAdmin +this.id)
      this.userService.getAssignments(this.id).subscribe((data)=>{console.log(data);
       params.api.setRowData(data)});
   
+  }
+  ongridReadyadmin(params){
+    console.log(this.id + this.isAdmin)
+     this.assignService.getAllOfAdmin(this.id).subscribe((data)=>{console.log(data);
+      params.api.setRowData(data)});
+  
+  }
+
+  getAssignProfile(params){
+    console.log(params)
+    const id =params.data.id;
+    this.router.navigate(['/assignmentProfile/', id]);
   }
 
 }

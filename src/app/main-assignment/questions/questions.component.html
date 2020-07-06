@@ -9,12 +9,13 @@
         [columnDefs]="columnDefs"
         [enableSorting]="true"
         [enableFilter]="true"
+        (rowClicked)="mcqClicked($event)"
         (gridReady)="ongridReady($event)"
         >
     </ag-grid-angular>
 </div>
 
-<div>
+<!-- <div>
     <h3>QUIZ</h3>
 </div>
 
@@ -28,7 +29,7 @@
         (gridReady)="onQuizgridReady($event)"
         >
     </ag-grid-angular>
-</div>
+</div> -->
 
 <div>
     <h3>PROJECTS & ASSIGNMENTS</h3>
@@ -41,8 +42,45 @@
         [columnDefs]="columsDefsProjet"
         [enableSorting]="true"
         [enableFilter]="true"
+        [defaultColDef]="defaultColDef"
+        (rowClicked)="projectClicked($event)"
         (gridReady)="onprojectgridReady($event)"
         >
     </ag-grid-angular>
 </div>
 
+<div class="pop-up" *ngIf="isMcqClicked">
+    <div class="window">
+        <h3 (click)="isMcqClicked=false" style="position: absolute; top: 0;right: 20px; transform: rotate(45deg); font-size: large; cursor: pointer;">+</h3>
+        <h3>MCQ</h3>
+        Question  :
+        <input class="input" value="mcq.question" type="text" name="question" [(ngModel)]="mcq.question"><br>
+        a  :
+        <input class="input" type="text" name="a" value="mcq.a" [(ngModel)]="mcq.a"><br>
+        b  :
+        <input class="input" type="text" name="b" value="mcq.b" [(ngModel)]="mcq.b">
+        <br>
+        c  :
+        <input class="input" type="text" name="c" value="mcq.c" [(ngModel)]="mcq.c"><br>
+        d  :
+        <input class="input" type="text" name="d" value="mcq.d" [(ngModel)]="mcq.d"><br>
+        answer  :
+        <input class="input" type="text" name="answer" value="mcq.answer" [(ngModel)]="mcq.answer"><br>
+        <button class="btn btn-danger" (click)="deleteMcq()" style="margin: 10px 15px;">Delete</button>
+        <button class="btn btn-warning" (click)="updateMcq()"  style="margin: 10px 15px;">Save</button>
+    </div>
+</div>
+
+<div class="pop-up" *ngIf="isProjectClicked">
+    <div class="window">
+        <h3 (click)="isProjectClicked=false" style="position: absolute; top: 0;right: 20px; transform: rotate(45deg); font-size: large; cursor: pointer;">+</h3>
+        <h3>PROJECT</h3>
+        Statement  :
+        <textarea class="input" name="statement" cols="25" rows="4" [(ngModel)]="project.statement"></textarea><br>
+        Technology  :
+        <textarea class="input" name="technology" cols="25" rows="4"value="project.technology" [(ngModel)]="project.technology"></textarea><br>
+        <br>
+        <button (click)="deleteProject()" class="btn btn-danger" style="margin: 10px 15px;">Delete</button>
+        <button (click)="updateProject()" class="btn btn-warning" style="margin: 10px 15px;">Save</button>
+    </div>
+</div>
